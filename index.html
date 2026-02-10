@@ -1,0 +1,204 @@
+﻿<
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迪拜互动小册子</title>
+    <link rel="stylesheet" href="StyleSheet1.css">
+</head>
+<body>
+
+    <!-- 目录页封面 -->
+    <div id="table-of-contents" class="page">
+        <h1>迪拜时空漫游指南</h1>
+        <p>点击下方任意站点，开启你的旅程</p>
+        <ul>
+            <li><a href="#station1">第一站：金相框（时空裂缝的观察者）</a></li>
+            <li><a href="#station2">第二站：伊朗小镇（解密生存算法）</a></li>
+            <li><a href="#station3">第三站：阿拉伯餐桌（部落的契约）</a></li>
+            <li><a href="#station4">第四站：朱美拉清真寺（信仰的密码）</a></li>
+            <li><a href="#station5">第五站：棕榈岛（后石油时代的豪赌）</a></li>
+        </ul>
+    </div>
+
+    <!-- 金相框 -->
+    <div id="station1" class="page">
+        <div class="frame-wrapper">
+            <div id="frame-title" class="frame-title-style">迪拜的过去</div>
+            <div id="image-container" class="image-container-style">
+                <div class="scene-background" id="scene-past"></div>
+                <div class="scene-background" id="scene-future"></div>
+                <div id="speech-bubble" class="speech-bubble-style">
+                    <p id="bubble-text"></p>
+                </div>
+                <a id="arrow-left" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
+                </a>
+                <a id="arrow-right" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 伊朗小镇 -->
+    <div id="station2" class="page">
+        <div class="station-container">
+            <h2>第二站：伊朗小镇</h2>
+            <div class="interactive-image-container" id="station2-slider-container">
+                <div class="scene-slider" id="station2-slider">
+                    <div class="scene" id="s2-scene-building">
+                        <div class="hotspot" id="s2-hotspot-tower" style="top: 25%; left: 48%;"></div>
+                        <div class="hotspot" id="s2-hotspot-window" style="top: 85%; left: 28%;"></div>
+                        <div class="hotspot" id="s2-hotspot-wall" style="top: 70%; left: 15%;"></div>
+                        <div class="dialogue-box-s2"><p id="dialogue-text-s2"></p></div>
+                    </div>
+                    <div class="scene" id="s2-scene-door">
+                        <div class="image-text-overlay door-text">
+                            <span class="highlight-text">大门上的两个金属环</span>，左边代表男性，右边代表女性，请你轻轻叩响大门进入阿联酋人的餐桌吧。
+                        </div>
+                    </div>
+                </div>
+                <a id="s2-arrow-left" class="arrow" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
+                </a>
+                <a id="s2-arrow-right" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 餐桌 -->
+    <div id="station3" class="page s3-background">
+        <div id="s3-phase-coffee">
+            <div id="s3-dialogue-box">
+                <p id="s3-dialogue-text">请享用你的咖啡</p>
+            </div>
+            <div id="s3-cups-container">
+                <div class="coffee-cup-wrapper" data-cup-id="1">
+                    <div class="steam-container"><span></span><span></span><span></span></div>
+                    <div class="coffee-cup"></div>
+                </div>
+                <div class="coffee-cup-wrapper" data-cup-id="2">
+                    <div class="steam-container"><span></span><span></span><span></span></div>
+                    <div class="coffee-cup"></div>
+                </div>
+                <div class="coffee-cup-wrapper" data-cup-id="3">
+                    <div class="steam-container"><span></span><span></span><span></span></div>
+                    <div class="coffee-cup"></div>
+                </div>
+            </div>
+            <div id="s3-final-choice" class="hidden">
+                <button id="s3-final-button">
+                    الله يبارك فيك
+                    <span class="pronunciation">(Allah Ybarik Feek)</span>
+                </button>
+            </div>
+        </div>
+        <div id="s3-phase-feast" class="hidden">
+            <div id="s3-feast-container">
+                <div class="hotspot" id="hotspot-lamb" style="top: 45%; left: 50%;"></div>
+                <div class="hotspot" id="hotspot-seafood" style="top: 75%; left: 50%;"></div>
+                <div class="hotspot" id="hotspot-stew" style="top: 60%; left: 85%;"></div>
+                <div class="hotspot" id="hotspot-dates" style="top: 30%; left: 15%;"></div>
+                <div class="hotspot" id="hotspot-tea" style="top: 85%; left: 20%;"></div>
+                <div class="hotspot" id="hotspot-dessert" style="top: 50%; left: 10%;"></div>
+                <div class="hotspot" id="hotspot-bread" style="top: 90%; left: 75%;"></div>
+                <div class="dialogue-box-s3-feast"><p id="dialogue-text-s3-feast"></p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 朱美拉清真寺-->
+    <div id="station4" class="page">
+        <!-- 上方 1/3：画廊区域 -->
+        <div class="gallery-container">
+            <div class="golden-frame-s4">
+                <div class="s4-slider" id="s4-image-slider">
+                    <div class="s4-slide"><img src="prophet-muhammad.jpg" alt="先知穆罕默德"></div>
+                    <div class="s4-slide"><img src="abrahamic-house.jpg" alt="亚伯拉罕之家"></div>
+                    <div class="s4-slide"><img src="ishmael-isaac.jpg" alt="以实马利与以撒"></div>
+                    <div class="s4-slide"><img src="sheikh-zayed-mosque.jpg" alt="谢赫扎耶德清真寺"></div>
+                    <div class="s4-slide"><img src="sheikh-zayed-portrait.jpg" alt="国父"></div>
+                </div>
+            </div>
+            <!-- 左右箭头 -->
+            <a id="s4-arrow-left" class="arrow s4-arrow" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" /></svg>
+            </a>
+            <a id="s4-arrow-right" class="arrow s4-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" /></svg>
+            </a>
+        </div>
+
+        <!-- 下方 2/3：文字解释区域 -->
+        <div class="text-container">
+            <div class="s4-slider" id="s4-text-slider">
+                <div class="s4-slide">
+                    <h3>《先知默罕默德》</h3>
+                    <p>伊斯兰教的起源：7世纪由先知穆罕默德在阿拉伯半岛创立，信徒（穆斯林）信奉独一真主安拉，视《古兰经》为真主的直接启示。</p>
+                </div>
+                <div class="s4-slide">
+                    <h3>《亚伯拉罕之家》</h3>
+                    <p>三教都自认是亚伯拉罕一神信仰的“真传”，犹如一个大家族的三个分支。<br>他们对“谁才是亚伯拉罕正统继承者”的争夺，贯穿了千年历史，是许多神学和政治冲突的深层根源。</p>
+                </div>
+                <div class="s4-slide">
+                    <h3>《以实马利与以撒》</h3>
+                    <p>亚伯拉罕与两位女性——撒拉和夏甲的故事，直接引出了两大后裔族群，奠定了三大宗教的血脉与灵性根源。撒拉代表了“神迹的应许”，夏甲则代表了“人意的尝试”与“神的怜悯”。</p>
+                </div>
+                <div class="s4-slide">
+                    <h3>《谢赫扎耶德清真寺》</h3>
+                    <p>谢赫·扎耶德大清真寺，如一座从沙漠传奇中升起的纯白圣殿，承载着国父谢赫·扎耶德的宏愿傲立于世。四座<span class="highlight-text">黄金塔尖</span>刺破苍穹，殿内铺陈着<span class="highlight-text">重逾35吨的全球最大手工地毯</span>，其上悬垂着镶嵌<span class="highlight-text">60万颗施华洛世奇水晶</span>的银河般吊灯；<span class="highlight-text">珍珠母贝与大理石交织的巨柱</span>在月相流转间投下变幻的影痕。这不仅是建筑，更是一部用黄金、月光与信仰铸成的史诗，将一个人的梦想化为全人类仰望的永恒之光。</p>
+                </div>
+                <div class="s4-slide">
+                    <h3>《国父》</h3>
+                    <p>谢赫·扎耶德（1918-2004），阿联酋的开国总统与国父。他出身沙漠部落，青年时代与贝都因人共处，深谙传统智慧。<span class="highlight-text">凭借远见与魄力，他在1971年统一七个酋长国，缔造了现代阿联酋。</span><br>他将石油财富化为全民福祉，奠基了免费教育、医疗与基础设施，并早于时代推行 <span class="highlight-text">沙漠绿化与环保理念</span>。他崇尚包容，既坚守伊斯兰价值观，又开放接纳多元文化，塑造了阿联酋 <span class="highlight-text">“全球十字路口”</span> 的独特身份。<br>生活中朴素亲民，常坐于帐篷中倾听民众诉求；国际舞台上，他以 <span class="highlight-text">中立调解者</span> 推动和平。其遗产超越时代——从世界最高的哈利法塔到最宏大的谢赫扎耶德清真寺，阿联酋的现代奇迹皆源于他的蓝图。<span class="highlight-text">他证明：沙漠亦可绽放绿洲，传统灵魂能引领未来。</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- 第五站：棕榈岛 (滑块交互) -->
+    <div id="station5" class="page">
+        <!-- 海洋背景 -->
+        <div class="ocean-background"></div>
+
+        <!-- 岛屿容器 -->
+        <div class="island-container">
+            <img src="palm-island-shape.png" alt="棕榈岛" id="palm-island-image">
+        </div>
+
+        <!-- UI 交互层 -->
+        <div class="ui-layer">
+            <div class="title-section">
+
+            <!-- 实时进度解说容器 === -->
+            <div id="s5-progress-text" class="progress-text-style">
+            </div>
+            <!-- =============================== -->
+
+                <!-- 滑块控制区域 -->
+                <div class="slider-control-area">
+                    <input type="range" min="0" max="100" value="0" class="miracle-slider" id="miracle-slider">
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- 全局返回目录按钮 -->
+    <div class="global-nav">
+        <a href="#table-of-contents">返回目录</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

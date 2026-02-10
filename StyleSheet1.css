@@ -1,0 +1,923 @@
+﻿/* --- 基础与通用样式 --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* 让锚点跳转更平滑 */
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #ccc;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+.station-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    .station-container .subtitle {
+        font-size: 1.1em;
+        color: #666;
+        margin-top: -10px;
+    }
+
+/* --- 目录页样式 --- */
+#table-of-contents {
+    background-image: url('cover-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    #table-of-contents h1 {
+        font-size: 2.5em;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    #table-of-contents p {
+        color: #f0f0f0;
+        font-size: 1.1em;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    #table-of-contents ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #table-of-contents li {
+        margin: 25px 0;
+    }
+
+    #table-of-contents a {
+        text-decoration: none;
+        color: #3498db;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border: 2px solid #3498db;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        width: 450px;
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(3px);
+    }
+
+        #table-of-contents a:hover {
+            background-color: rgba(255, 255, 255, 1);
+            color: #3498db;
+        }
+
+/* --- 第一站：金相框样式 --- */
+.frame-wrapper {
+    width: 90%;
+    max-width: 450px;
+    height: 75vh;
+    max-height: 600px;
+    background-color: #fff;
+    border: 10px solid #D4AF37;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.frame-title-style {
+    text-align: center;
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.image-container-style {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.scene-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.7s ease-in-out;
+}
+
+#scene-past {
+    background-image: url('dubai-past.png');
+    opacity: 1;
+    z-index: 2;
+}
+
+#scene-future {
+    background-image: url('dubai-future.png');
+    opacity: 0;
+    z-index: 1;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.2s;
+}
+
+    .arrow:hover {
+        background-color: white;
+    }
+
+#arrow-left {
+    left: 10px;
+}
+
+#arrow-right {
+    right: 10px;
+}
+
+.arrow svg {
+    width: 60%;
+    height: 60%;
+}
+
+.speech-bubble-style {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    z-index: 5;
+    text-align: center;
+    color: #333;
+    font-size: 1em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+    .speech-bubble-style::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px;
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+    }
+
+    .speech-bubble-style.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* --- 第二站：伊朗小镇样式 --- */
+.scene-slider {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.scene {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#station2-slider-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+#s2-scene-building {
+    background-image: url('iran-town.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+    #s2-scene-building .hotspot {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background-color: rgba(255, 215, 0, 0.8);
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 1);
+        animation: sparkle 2s infinite ease-in-out;
+    }
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 1;
+    }
+}
+
+.dialogue-box-s2 {
+    display: none;
+    position: absolute;
+    width: 200px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid #333;
+    box-shadow: 5px 5px 0px #333;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #333;
+    z-index: 20;
+}
+
+    .dialogue-box-s2::after, .dialogue-box-s2::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+
+    .dialogue-box-s2::after {
+        bottom: -13px;
+        left: 20px;
+        border-width: 15px 15px 0;
+        border-left-width: 5px;
+        border-right-width: 5px;
+        border-color: #333 transparent;
+    }
+
+    .dialogue-box-s2::before {
+        bottom: -9px;
+        left: 22px;
+        border-width: 12px 12px 0;
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-color: #fff transparent;
+        z-index: 1;
+    }
+
+#s2-scene-door {
+    background-image: url('iran-door.jpg');
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+    #s2-scene-door .door-text {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        padding: 10px;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: bold;
+        line-height: 1.6;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+
+#station2-slider-container .arrow {
+    top: auto;
+    bottom: 15px;
+    transform: none;
+}
+
+#station2-slider-container #s2-arrow-right {
+    right: 15px;
+    left: auto;
+}
+
+#station2-slider-container #s2-arrow-left {
+    left: 15px;
+    right: auto;
+}
+
+.highlight-text {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* --- 第三站：Al Khayma 餐桌样式 --- */
+.s3-background {
+    position: relative;
+    background-image: url('arab-man.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+}
+
+#s3-dialogue-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 3px solid #b8860b;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+#s3-dialogue-text {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+#s3-cups-container {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+
+.coffee-cup-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.coffee-cup {
+    width: 60px;
+    height: 55px;
+    border: 5px solid #c0c0c0;
+    border-top: 0;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+    background: linear-gradient(to right, #6f4e37, #8b6b50);
+}
+
+    .coffee-cup::after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        right: -20px;
+        width: 16px;
+        height: 28px;
+        border: 5px solid #c0c0c0;
+        border-left: 0;
+        border-radius: 0 12px 12px 0;
+    }
+
+.steam-container {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 40px;
+    filter: blur(2px);
+    transition: opacity 0.5s;
+}
+
+    .steam-container span {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 3px;
+        height: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 2px;
+        animation: steam-animation 3s infinite ease-in-out;
+    }
+
+        .steam-container span:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .steam-container span:nth-child(3) {
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+@keyframes steam-animation {
+    0% {
+        height: 0;
+        opacity: 0;
+    }
+
+    40% {
+        height: 40px;
+        opacity: 1;
+    }
+
+    80% {
+        height: 40px;
+        opacity: 0;
+    }
+
+    100% {
+        height: 40px;
+        opacity: 0;
+    }
+}
+
+.steam-container.fade-out {
+    opacity: 0;
+}
+
+.coffee-cup-wrapper.clicked {
+    cursor: default;
+    opacity: 0.7;
+}
+
+#s3-final-choice {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+
+#s3-final-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: #b8860b;
+    border: 2px solid white;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+    #s3-final-button:hover {
+        transform: scale(1.05);
+    }
+
+    #s3-final-button .pronunciation {
+        display: block;
+        font-size: 0.7em;
+        font-weight: normal;
+        opacity: 0.8;
+        margin-top: 5px;
+    }
+
+#s3-feast-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('feast-table.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+    #s3-feast-container .hotspot {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background-color: rgba(255, 215, 0, 0.8);
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 1);
+        animation: sparkle 2s infinite ease-in-out;
+    }
+
+.dialogue-box-s3-feast {
+    display: none;
+    position: absolute;
+    width: 200px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid #333;
+    box-shadow: 5px 5px 0px #333;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #333;
+    z-index: 20;
+}
+
+    .dialogue-box-s3-feast::after, .dialogue-box-s3-feast::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+
+    .dialogue-box-s3-feast::after {
+        bottom: -13px;
+        left: 20px;
+        border-width: 15px 15px 0;
+        border-left-width: 5px;
+        border-right-width: 5px;
+        border-color: #333 transparent;
+    }
+
+    .dialogue-box-s3-feast::before {
+        bottom: -9px;
+        left: 22px;
+        border-width: 12px 12px 0;
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-color: #fff transparent;
+        z-index: 1;
+    }
+
+.back-to-menu-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    z-index: 30;
+    transition: background-color 0.2s;
+}
+
+    .back-to-menu-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+/* --- 响应式设计：手机屏幕适配 --- */
+@media (max-width: 768px) {
+    #table-of-contents h1 {
+        font-size: 2em;
+    }
+
+    #table-of-contents a {
+        font-size: 1em;
+        padding: 8px 16px;
+        width: 90%;
+    }
+
+    .page h2 {
+        font-size: 1.5em;
+    }
+
+    .page p {
+        font-size: 0.9em;
+    }
+}
+/* --- 全局返回目录按钮样式 --- */
+.global-nav {
+    position: fixed; /* 关键！让它固定在屏幕上，不随页面滚动 */
+    bottom: 20px; /* 距离屏幕底部 20px */
+    left: 50%; /* 先移动到屏幕中线 */
+    transform: translateX(-50%); /* 再向左移动自身宽度的一半，实现完美居中 */
+    z-index: 100; /* 设置一个很高的层级，确保它在所有元素之上 */
+}
+
+    .global-nav a {
+        display: block;
+        padding: 10px 25px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 1em;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        transition: all 0.2s ease;
+    }
+
+        .global-nav a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05); /* 鼠标悬停时轻微放大 */
+        }
+/* --- 第四站：朱美拉清真寺样式 --- */
+
+/* 重置第四站页面的内边距和对齐方式，以实现上下布局 */
+#station4.page {
+    padding: 0;
+    justify-content: flex-start; /* 从顶部开始对齐 */
+}
+
+/* 上方画廊容器 */
+.gallery-container {
+    width: 100%;
+    height: 40vh; /* 占据屏幕高度的40% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #e9e4d9; /* 一个柔和的背景色 */
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+/* 金色复古相框 */
+.golden-frame-s4 {
+    width: 80%;
+    max-width: 400px;
+    aspect-ratio: 4 / 3;
+    border: 12px solid #D4AF37;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+    overflow: hidden; /* 隐藏滑块超出的部分 */
+}
+
+/* 下方文字容器 */
+.text-container {
+    width: 100%;
+    height: 60vh;
+    padding: 20px 15%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #fdfcf9;
+    text-align: left;
+    position: relative; 
+}
+
+
+    .text-container h3 {
+        font-size: 1.4em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .text-container p {
+        font-size: 1em;
+        line-height: 1.8;
+        color: #555;
+    }
+
+/* 第四站的滑动容器和滑块 */
+.s4-slider {
+    display: flex;
+    width: 500%; /* 因为有5个滑块 */
+    height: 100%;
+    transition: transform 0.6s ease-in-out; /* 平滑切换效果 */
+}
+
+.s4-slide {
+    width: 20%; /* 每个滑块占1/5 */
+    height: 100%;
+    flex-shrink: 0; /* 防止滑块被压缩 */
+    box-sizing: border-box;
+}
+
+#s4-image-slider .s4-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#s4-image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 让图片填满容器而不变形 */
+}
+
+#s4-text-slider .s4-slide {
+    padding: 0 10px; /* 给文字滑块之间一点间距 */
+}
+
+/* 第四站的箭头样式 */
+.s4-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#s4-arrow-left {
+    left: 20px;
+}
+
+#s4-arrow-right {
+    right: 20px;
+}
+/* --- 第四站：文字区域渐变遮罩 --- */
+
+/* 创建左侧的“白边” */
+.text-container::before {
+    content: ''; /* 伪元素必须有 content 属性 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%; /* 宽度和容器的 padding 一致 */
+    height: 100%;
+    /* 关键：创建一个从左到右的线性渐变 */
+    background: linear-gradient(to right, #fdfcf9 70%, transparent);
+    z-index: 5; /* 确保它在文字滑块之上 */
+}
+
+/* 创建右侧的“白边” */
+.text-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    /* 关键：创建一个从右到左的线性渐变 */
+    background: linear-gradient(to left, #fdfcf9 70%, transparent);
+    z-index: 5;
+}
+/* --- 第五站：棕榈岛样式 --- */
+
+/* 重置第五站页面的内边距，并设置定位上下文 */
+#station5.page {
+    padding: 0;
+    position: relative;
+    overflow: hidden; /* 隐藏可能超出的部分 */
+}
+
+/* 海洋背景 */
+.ocean-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #003366; /* 深蓝色 */
+    background-image: linear-gradient(to bottom, #004080, #002040);
+}
+
+/* 岛屿容器和图片 */
+.island-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#palm-island-image {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    /* 关键：使用 clip-path 来裁剪图片 */
+    clip-path: inset(0 100% 0 0); /* 默认从右向左完全裁剪，即隐藏 */
+    transition: clip-path 0.1s linear; /* 让裁剪过程稍微平滑一点 */
+}
+
+/* UI 交互层，覆盖在最上面 */
+.ui-layer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 让标题在顶部，滑块在底部 */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.title-section h2 {
+    margin-top: 0;
+}
+
+/* 最终文案样式 */
+#s5-final-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0; /* 默认透明 */
+    transition: opacity 1s ease-in-out;
+}
+
+    #s5-final-text.visible {
+        opacity: 1;
+    }
+
+/* 滑块控制区域 */
+.slider-control-area {
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 20;
+}
+
+
+
+.miracle-slider {
+    -webkit-appearance: none; /* 移除默认样式 */
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+}
+    /* 滑块的拖动按钮 */
+    .miracle-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #FFD700; /* 金色 */
+        cursor: pointer;
+        border-radius: 50%;
+        border: 3px solid white;
+    }
+
+    .miracle-slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #FFD700;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 3px solid white;
+    }
+/* --- 第五站：实时进度解说文字样式 (修改后) --- */
+#s5-progress-text {
+    position: absolute;
+    top: auto; /* 关键：取消顶部的定位 */
+    bottom: 30%; /* 关键：将它定位在距离屏幕底部 30% 的位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 500px;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.6;
+    transition: opacity 0.5s ease-in-out;
+    /* 关键：添加白色字体和黑色描边效果 */
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+
+    .progress-text-style p {
+        margin: 0;
+    }
